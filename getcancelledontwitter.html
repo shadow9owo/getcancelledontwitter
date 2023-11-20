@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>get cancelled on twitter simulator</title>
+</head>
+<body>
+    <center>
+        <h1>get cancelled on twitter simulator</h1><p>version 1.0</p>
+        <br>
+        <br>
+        <br>
+        <br>
+        <input type="text" inputpr="inputpressed()" id="field" placeholder="What is happening?!" style="width: 256px;height: 50px; font-size: 16px;background-color: transparent;border: none;outline:none"><button class="tweet" onclick="sendbtn()">Tweet!</button>
+        <div id="commentsect" style="visibility: hidden" class="comment">
+            <img id="pfp" src="" title="profilepicture.svg" style="height: 64px; width: 64px; border-radius: 50%; border: 0; outline: none; padding: 0; margin: 0;display: inline;"><p id="twitterhandle" style="display: inline;color: rgb(101,119,134);"></p><p id="twitterusername" style="display: inline;"></p>
+            <p id="message"></p>
+        </div>
+        <br>
+        <br>
+        <br>
+        <a id="restardid" onclick="restart()" style="visibility: hidden;color: blue;text-decoration: underline;">play again</a>
+    </center>
+</body>
+</html>
+<!--css-->
+<style>
+h1 {font-family: "Roboto";color: rgb(245 ,248 ,250);}
+p {font-family: "Roboto";color: rgb(245 ,248 ,250);}
+input {
+  font-family: "Roboto";
+  color: rgb(245, 248, 250);
+}
+
+.tweet {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #1DA1F2;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 16px;
+      cursor: pointer;
+}
+
+input::placeholder {
+  font-family: "Roboto";
+  color: rgb(101, 119, 134);
+}
+
+input:hover::placeholder {
+  color: rgb(245, 248, 250);
+}
+a {
+    cursor: pointer;
+}
+body {background-color: rgb(20, 23 ,26);}
+</style>
+<!--js-->
+<script>
+var won = false;
+var username = prompt("enter your username (important)")
+while (username === "") {
+    username = prompt("enter your username (trust me its important)")
+}
+if (username === null) {
+    username = "null";
+}
+var inputfield = document.getElementById("field")
+var inputed = false
+var randombs = ["911 was an inside job","jfk got quickscoped","dream is a bad youtuber","i hate kpop"]
+var tempnumberfield;
+storetmp = "";
+inputfield.value = "";
+won = false;
+inputed = false;
+
+inputfield.addEventListener("input", function() {
+    if (!inputed) {
+        tempnumberfield = Math.floor(Math.random() * 4);
+        while (randombs[tempnumberfield] == inputfield.value) {
+            tempnumberfield = Math.floor(Math.random() * 4);
+        }
+        inputfield.value = randombs[tempnumberfield];
+        inputed = true;
+        storetmp = inputfield.value;
+    }else {
+        if (storetmp !== inputfield.value) {
+            inputfield.value = storetmp;
+        }
+        if (won) {
+          return;
+        }
+    }
+}); 
+
+var pfparray = [
+    "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F4f%2Fe5%2Fac%2F4fe5ac799f2d3f0fe519ac4ed3d05260.jpg&f=1&nofb=1&ipt=fe7e2ee50b159138acd038361a7bc5fedceda87ba00bb6d6064e5c3779f7ba0f&ipo=images",
+    "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2Fc8%2Fcd%2F4f%2Fc8cd4f053b347b8df8a1c839770a60af.jpg&f=1&nofb=1&ipt=d41be1d991989f67e3d086cf7d756a6191f8d7c82551af1f80cfbb6261fcb5a7&ipo=images",
+    "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.redd.it%2F5dexhgi7aeu61.jpg&f=1&nofb=1&ipt=8f01b868d925a99c6345c224c89d7c052b46b3e2e482efcdc98c76cb3f2027e7&ipo=images",
+    "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F15%2F48%2F87%2F154887a1865288c40fefe04d458f7a17.jpg&f=1&nofb=1&ipt=d691985b3a1b5e0205d008f0d92bae30099caecc5286ba5fc5a72a90d9fffce2&ipo=images"
+]
+var cancelusername = document.getElementById("twitterusername");
+var cancelhandle = document.getElementById("twitterhandle");
+var profile = document.getElementById("commentsect");
+var profilepicture = document.getElementById("pfp");
+var numbergen;
+var tempnumber;
+var usernum;
+var oldusernum;
+var messagesarray = ["sir you are a horrible person how dare you say #cancel_" + username,"WTF #cancel_" + username,"you have offended me and now i will cancel you >:D #cancel_" + username,"get cancelled #cancel_" + username]
+var messagenum;
+var oldmessagenum;
+var commenttext = document.getElementById("message");
+var tryagain = document.getElementById("restardid");
+
+function restart() {
+    storetmp = "";
+    inputfield.value = "";
+    won = false;
+    inputed = false;
+    profile.style = "visibility: hidden;";
+    tryagain.style ="visibility: hidden;color: blue;text-decoration: underline;";
+}
+
+var namearray = [
+    "ilovetocancelstuff",
+    "snowflake23",
+    "emilyisemo",
+    "breakcoreisepic"
+]
+
+function sendbtn() {
+    if (won) {
+        return;
+    }
+    if (inputed) {
+    messagenum = Math.floor(Math.random() * 4);
+    usernum = Math.floor(Math.random() * 4);
+    tempnumber = Math.floor(Math.random() * 4);
+    while (tempnumber == numbergen) {
+        tempnumber = Math.floor(Math.random() * 4);
+    }
+    profilepicture.src = pfparray[tempnumber];
+    while (usernum == oldusernum) {
+        usernum = Math.floor(Math.random() * 4);
+    }
+    while (messagenum == oldmessagenum) {
+        messagenum = Math.floor(Math.random() * 4);
+    }
+    cancelhandle.innerText = "@" + namearray[usernum] + " ";
+    cancelusername.innerText = namearray[usernum];
+    numbergen = tempnumber;
+    commenttext.innerText = messagesarray[messagenum];
+    profile.style = "visibility: visible;";
+    inputed = false;
+    won = true;
+    oldusernum = usernum;
+    tryagain.style ="visibility: visible;color: blue;text-decoration: underline;";
+    }
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
