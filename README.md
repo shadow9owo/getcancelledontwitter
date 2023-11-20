@@ -1,4 +1,4 @@
-# get cancelled on twitter
+# get cancelled on twitter (sim)
 source code for a joke simulator
 
 # changes and logs
